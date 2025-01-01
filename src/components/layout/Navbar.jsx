@@ -235,25 +235,22 @@ const Navbar = () => {
                           <Link
                             key={menuItem.title}
                             to={menuItem.link}
-                            className="flex flex-col items-center space-y-2 bg-gray-100 p-4 rounded-lg"
+                            className="flex flex-row items-center space-x-4 bg-gray-100 p-4 rounded-lg"
                             onClick={() => {
                         setIsOpen(false); // Close menu on link click
                         setIsMegaMenuOpen(false); // Close the dropdown
                       }}
                           >
-                            <div className="flex justify-center items-center w-full">
+                            <div className="flex">
                               <img
                                 src={menuItem.image}
                                 alt={menuItem.title}
-                                className="w-full h-32 object-cover rounded"
+                                className="w-16 h-16 object-cover rounded"
                               />
                             </div>
-                            <h3 className="text-gray-800 hover:text-green-600 text-sm font-bold text-center">
+                            <h3 className="text-gray-800 hover:text-green-600 text-sm font-bold">
                               {menuItem.title}
                             </h3>
-                            <p className="text-gray-600 text-sm text-center">
-                              {menuItem.description}
-                            </p>
                           </Link>
                         ))}
                       </div>
@@ -289,9 +286,6 @@ const Navbar = () => {
                             <h3 className="text-gray-800 hover:text-green-600 text-sm font-bold">
                               {menuItem.title}
                             </h3>
-                            <p className="text-gray-600 text-sm">
-                              {menuItem.description}
-                            </p>
                           </Link>
                         ))}
                       </div>
