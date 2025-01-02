@@ -1,6 +1,8 @@
 import React from 'react';
 import ContactForm from './ContactForm';
 import ContactInfo from './ContactInfo';
+import GoogleMap from './GoogleMap';
+
 
 function ContactPage() {
   return (
@@ -22,6 +24,7 @@ function ContactPage() {
             <ContactForm />
           </div>
         </div>
+        <GoogleMap />
       </div>
     </section>
   </div>

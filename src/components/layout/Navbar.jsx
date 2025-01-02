@@ -28,8 +28,7 @@ const Navbar = () => {
   }, []);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
-  const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [openSubMenu, setOpenSubMenu] = useState(null); // Track open submenu
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -112,6 +111,15 @@ const Navbar = () => {
         "Meet the passionate individuals behind our success and their expertise.",
     },
   ];
+
+  const handleSubMenuToggle = (submenu) => {
+    if (openSubMenu === submenu) {
+      setOpenSubMenu(null); // Close if the same submenu is clicked
+    } else {
+      setOpenSubMenu(submenu); // Open the clicked submenu
+    }
+  };
+
   return (
     <nav className="bg-white shadow-lg fixed w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -212,40 +220,40 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden h-[80vh] overflow-y-auto">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) =>
               item.name === "Services" ? (
                 <div key={item.name}>
                   <button
-                    onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
+                    onClick={() => handleSubMenuToggle("services")}
                     className="w-full text-left flex justify-between items-center text-gray-700 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"
                   >
                     {item.name}
-                    {isMegaMenuOpen ? (
+                    {openSubMenu === "services" ? (
                       <ChevronUp className="h-5 w-5 text-gray-500" />
                     ) : (
                       <ChevronDown className="h-5 w-5 text-gray-500" />
                     )}
                   </button>
-                  {isMegaMenuOpen && (
-                    <div className="bg-gray-50 px-4 py-4 rounded-md shadow-lg overflow-y-auto max-h-64">
-                      <div className="flex flex-col space-y-4">
+                  {openSubMenu === "services" && (
+                    <div className="bg-white px-4 py-0 rounded-md h-auto">
+                      <div className="flex flex-col">
                         {megaMenuItems.map((menuItem) => (
                           <Link
                             key={menuItem.title}
                             to={menuItem.link}
-                            className="flex flex-row items-center space-x-4 bg-gray-100 p-4 rounded-lg"
+                            className="flex flex-row items-center space-x-4 bg-white p-4 rounded-lg"
                             onClick={() => {
-                        setIsOpen(false); // Close menu on link click
-                        setIsMegaMenuOpen(false); // Close the dropdown
-                      }}
+                              setIsOpen(false); // Close menu on link click
+                              setOpenSubMenu(null); // Close all submenus
+                            }}
                           >
                             <div className="flex">
                               <img
                                 src={menuItem.image}
                                 alt={menuItem.title}
-                                className="w-16 h-16 object-cover rounded"
+                                className="w-10 h-10 object-cover rounded"
                               />
                             </div>
                             <h3 className="text-gray-800 hover:text-green-600 text-sm font-bold">
@@ -260,28 +268,28 @@ const Navbar = () => {
               ) : item.name === "About" ? (
                 <div key={item.name}>
                   <button
-                    onClick={() => setIsAboutOpen(!isAboutOpen)}
+                    onClick={() => handleSubMenuToggle("about")}
                     className="w-full text-left flex justify-between items-center text-gray-700 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"
                   >
                     {item.name}
-                    {isAboutOpen ? (
+                    {openSubMenu === "about" ? (
                       <ChevronUp className="h-5 w-5 text-gray-500" />
                     ) : (
                       <ChevronDown className="h-5 w-5 text-gray-500" />
                     )}
                   </button>
-                  {isAboutOpen && (
-                    <div className="bg-gray-50 px-4 py-4 rounded-md shadow-lg overflow-y-auto max-h-64">
-                      <div className="flex flex-col space-y-4">
+                  {openSubMenu === "about" && (
+                    <div className="bg-white px-4 py-0 rounded-md h-auto">
+                      <div className="flex flex-col">
                         {megaMenuItemsAbout.map((menuItem) => (
                           <Link
                             key={menuItem.title}
                             to={menuItem.link}
-                            className="flex flex-col items-start space-y-2 bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition" 
+                            className="flex flex-col items-start space-y-2 bg-white p-4 rounded-lg hover:bg-gray-200 transition"
                             onClick={() => {
-                        setIsOpen(false); // Close menu on link click
-                        setIsAboutOpen(false); // Close the dropdown
-                      }}
+                              setIsOpen(false); // Close menu on link click
+                              setOpenSubMenu(null); // Close all submenus
+                            }}
                           >
                             <h3 className="text-gray-800 hover:text-green-600 text-sm font-bold">
                               {menuItem.title}

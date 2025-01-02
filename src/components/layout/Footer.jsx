@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Brain, Facebook, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Brain, Facebook, Twitter, Linkedin, Mail, Phone, MapPin, Instagram } from 'lucide-react';
 import Think from '../../assets/images/think_tank_info_tech_white.png';
 
 const Footer = () => {
@@ -60,13 +60,13 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <a href="https://www.facebook.com/thinktankinfotechpvtltd" target='_blank' className="text-gray-400 hover:text-blue-400 transition-colors">
                 <Facebook className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Twitter className="h-6 w-6" />
+              <a href="https://www.instagram.com/thinktankinfotechpvtltd/" target='_blank' className="text-gray-400 hover:text-blue-400 transition-colors">
+                <Instagram className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <a href="https://linkedin.com/in/thinktankinfotechpvtltd/" target='_blank' className="text-gray-400 hover:text-blue-400 transition-colors">
                 <Linkedin className="h-6 w-6" />
               </a>
             </div>

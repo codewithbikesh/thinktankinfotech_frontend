@@ -3,6 +3,7 @@ import Hero from '../components/home/Hero';
 import Services from '../components/home/Services';
 import WhyChooseUs from '../components/home/WhyChooseUs';
 import Testimonials from '../components/home/Testimonials';
+import ClientCard from '../components/our-clients/ClientCard';
 import banner  from '../assets/images/hero_background.png';
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
       <Services />
       <WhyChooseUs />
       {/* <Testimonials /> */}
+       <ClientCard />
     </div>
   );
 };
