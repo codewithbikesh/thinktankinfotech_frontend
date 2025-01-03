@@ -9,7 +9,8 @@ const CompanyIntro = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl font-bold text-gray-700 mb-6">
-              About Think Tank Info Tech
+             <span className="text-green-600">About Think</span>{" "} 
+              <span className="text-orange-600">Tank Info Tech</span>
             </h1>
             <p className="text-lg text-gray-600 mb-8 text-justify">
               Founded in 2024, Think Tank Info Tech Pvt. Ltd. is a forward-thinking
@@ -28,7 +29,8 @@ const CompanyIntro = () => {
                 <Target className="h-6 w-6 text-green-600 mt-1" />
                 <div>
                   <h3 className="text-xl font-semibold text-gray-700 mb-2">
-                    Our Mission
+                    <span className="text-green-600">Our</span>{" "} 
+                   <span className="text-orange-600">Mission</span>
                   </h3>
                   <p className="text-gray-600">
                     To empower businesses through innovative technology
@@ -40,7 +42,8 @@ const CompanyIntro = () => {
                 <Lightbulb className="h-6 w-6 text-green-600 mt-1" />
                 <div>
                   <h3 className="text-xl font-semibold text-gray-700 mb-2">
-                    Our Vision
+                    <span className="text-green-600">Our</span>{" "} 
+                   <span className="text-orange-600">Vision</span>
                   </h3>
                   <p className="text-gray-600">
                     To be the global leader in delivering transformative IT

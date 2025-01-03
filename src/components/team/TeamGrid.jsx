@@ -56,7 +56,10 @@ const TeamGrid = () => {
     {/* Add teams details here  */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-700 mb-4" data-aos="zoom-in">Meet Our Team</h2>
+          <h2 className="text-3xl font-bold text-gray-700 mb-4" data-aos="zoom-in">
+          <span className="text-green-700">Meet</span>{" "}
+          <span className="text-orange-600">Our Team</span>
+          </h2>
           <p className="text-xl text-gray-600" data-aos="zoom-in">
             The brilliant minds behind our success
           </p>
@@ -65,7 +68,7 @@ const TeamGrid = () => {
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
             >
               <img
                 src={member.image}
@@ -73,18 +76,18 @@ const TeamGrid = () => {
                 className="w-full h-64 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-1 group-hover:text-orange-600">{member.name}</h3>
                 <p className="text-gray-600 mb-4">{member.role}</p>
                 <div className="flex space-x-4">
                   <a
                     href={member.linkedin}
-                    className="text-gray-400 hover:text-blue-600 transition-colors"
+                    className="text-gray-400 group-hover:text-orange-600 transition-colors"
                   >
                     <Linkedin className="h-5 w-5" />
                   </a>
                   <a
                     href={`mailto:${member.email}`}
-                    className="text-gray-400 hover:text-blue-600 transition-colors"
+                    className="text-gray-400 group-hover:text-orange-600 transition-colors"
                   >
                     <Mail className="h-5 w-5" />
                   </a>
@@ -100,7 +103,10 @@ const TeamGrid = () => {
     <section className="py-5 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-700 mb-4" data-aos="zoom-in">Our Advisors</h2>
+          <h2 className="text-3xl font-bold text-gray-700 mb-4" data-aos="zoom-in">
+          <span className="text-green-700">Our</span>{" "}
+          <span className="text-orange-600">Advisors</span>
+           </h2>
           {/* <p className="text-xl text-gray-600">
             The brilliant minds behind our success
           </p> */}
@@ -109,7 +115,7 @@ const TeamGrid = () => {
           {OurAdvisors.map((member, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
             >
             <div className="flex justify-center items-center my-4">
               <img
@@ -119,7 +125,7 @@ const TeamGrid = () => {
               />
                </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-1 group-hover:text-orange-600">{member.name}</h3>
                 <p className="text-gray-600 mb-1">{member.role}</p>
                 <p className="text-gray-600">{member.corporation}</p>
               </div>

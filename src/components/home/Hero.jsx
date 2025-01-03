@@ -9,10 +9,10 @@ const Hero = ({ title1, image, serviceLink, contactLink, buttonText1, buttonText
       <div className="text-left flex-1">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-700 mb-4 sm:mb-5 text-justify sm:text-left">{title1}</h1>
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
-          <Link to={serviceLink} className="px-6 py-3 bg-green-700 text-white rounded-lg cursor-pointer w-full sm:w-auto">
+          <Link to={serviceLink} className="px-6 py-3 bg-green-700 hover:bg-orange-600 transition-all duration-300 ease-in-out text-white rounded-lg cursor-pointer w-full sm:w-auto">
             {buttonText1}
           </Link>
-          <Link to={contactLink} className="px-6 py-3 bg-green-700 text-white rounded-lg cursor-pointer w-full sm:w-auto">
+          <Link to={contactLink} className="px-6 py-3 bg-green-700 hover:bg-orange-600 transition-all duration-300 ease-in-out text-white rounded-lg cursor-pointer w-full sm:w-auto">
             {buttonText2}
           </Link>
         </div>

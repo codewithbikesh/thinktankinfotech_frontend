@@ -137,7 +137,7 @@ const Navbar = () => {
                 <div key={item.name} className="relative group">
                   <Link
                     to={item.path}
-                    className="text-gray-700 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center"
+                    className="text-gray-700 group-hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center"
                   >
                     {item.name}
                     <ChevronDown className="ml-1" size={14} />
@@ -147,14 +147,14 @@ const Navbar = () => {
                       <Link
                         key={menuItem.title}
                         to={menuItem.link}
-                        className="flex flex-col items-start space-y-2 p-4 rounded hover:bg-gray-100 transition"
+                        className="flex flex-col items-start space-y-2 p-4 rounded hover:bg-orange-100 transition"
                       >
                         <img
                           src={menuItem.image}
                           alt={menuItem.title}
                           className="w-16 h-16 object-cover rounded"
                         />
-                        <h3 className="text-gray-800 hover:text-green-600 text-sm font-bold">
+                        <h3 className="text-gray-800 hover:text-orange-600 text-sm font-bold">
                           {menuItem.title}
                         </h3>
                         <p className="text-gray-600 text-sm">
@@ -167,7 +167,7 @@ const Navbar = () => {
               ) : item.name === "About" ? (
                 <div key={item.name} className="relative group">
                   <button
-                    className="text-gray-700 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center"
+                    className="text-gray-700 group-hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center"
                     onClick={(e) => e.preventDefault()} // Prevent default action
                   >
                     {item.name}
@@ -178,9 +178,9 @@ const Navbar = () => {
                       <Link
                         key={menuItem.title}
                         to={menuItem.link}
-                        className="flex flex-col items-start space-y-2 p-4 rounded hover:bg-gray-100 transition"
+                        className="flex flex-col items-start space-y-2 p-4 rounded hover:bg-orange-100 transition group"
                       >
-                        <h3 className="text-gray-800 hover:text-green-600 text-sm font-bold">
+                        <h3 className="text-gray-800 hover:text-orange-600 text-sm font-bold">
                           {menuItem.title}
                         </h3>
                         <p className="text-gray-600 text-sm">
@@ -194,7 +194,7 @@ const Navbar = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className="text-gray-700 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   {item.name}
                 </Link>
@@ -206,7 +206,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-green-600 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-orange-600 focus:outline-none"
             >
               {isOpen ? (
                 <X className="h-6 w-6" />
@@ -227,7 +227,7 @@ const Navbar = () => {
                 <div key={item.name}>
                   <button
                     onClick={() => handleSubMenuToggle("services")}
-                    className="w-full text-left flex justify-between items-center text-gray-700 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"
+                    className="w-full text-left flex justify-between items-center text-gray-700 hover:text-orange-600 block px-3 py-2 rounded-md text-base font-medium"
                   >
                     {item.name}
                     {openSubMenu === "services" ? (
@@ -256,7 +256,7 @@ const Navbar = () => {
                                 className="w-10 h-10 object-cover rounded"
                               />
                             </div>
-                            <h3 className="text-gray-800 hover:text-green-600 text-sm font-bold">
+                            <h3 className="text-gray-800 hover:text-orange-600 text-sm font-bold">
                               {menuItem.title}
                             </h3>
                           </Link>
@@ -269,7 +269,7 @@ const Navbar = () => {
                 <div key={item.name}>
                   <button
                     onClick={() => handleSubMenuToggle("about")}
-                    className="w-full text-left flex justify-between items-center text-gray-700 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"
+                    className="w-full text-left flex justify-between items-center text-gray-700 hover:text-orange-600 block px-3 py-2 rounded-md text-base font-medium"
                   >
                     {item.name}
                     {openSubMenu === "about" ? (
@@ -291,7 +291,7 @@ const Navbar = () => {
                               setOpenSubMenu(null); // Close all submenus
                             }}
                           >
-                            <h3 className="text-gray-800 hover:text-green-600 text-sm font-bold">
+                            <h3 className="text-gray-800 hover:text-orange-600 text-sm font-bold">
                               {menuItem.title}
                             </h3>
                           </Link>
@@ -304,7 +304,7 @@ const Navbar = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className="text-gray-700 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"
+                  className="text-gray-700 hover:text-orange-600 block px-3 py-2 rounded-md text-base font-medium"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}

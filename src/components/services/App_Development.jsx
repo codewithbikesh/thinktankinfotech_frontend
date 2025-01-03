@@ -41,7 +41,7 @@ const AppDevelopmentPage = () => {
             </li>
             <li className="flex items-center">
               <User className="text-green-500 mr-3" />
-              <span className="text-lg text-gray-600">Custom UI/UX design</span>
+              <span className="text-lg text-green-600">Custom UI/UX Design</span>
             </li>
             <li className="flex items-center">
               <Shield className="text-green-500 mr-3" />

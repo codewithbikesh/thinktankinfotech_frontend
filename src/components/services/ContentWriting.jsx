@@ -17,52 +17,53 @@ const ContentWriting = () => {
       {/* Features Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
-          Why Choose Us for Content Writing?
+        <span className="text-green-600">Why Choose Us for</span>{" "}
+        <span className="text-orange-600">Content Writing?</span> 
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Feature 1 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Audience-Centric Approach</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Audience-Centric Approach</h3>
             <p className="text-gray-600">
               We create content that speaks directly to your audience’s needs, interests, and pain points.
             </p>
           </div>
 
           {/* Feature 2 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">SEO-Optimized Content</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">SEO-Optimized Content</h3>
             <p className="text-gray-600">
               Our content is crafted to improve your search engine rankings and increase organic traffic.
             </p>
           </div>
 
           {/* Feature 3 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Engaging Storytelling</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Engaging Storytelling</h3>
             <p className="text-gray-600">
               We bring your brand’s story to life with creative and compelling narratives.
             </p>
           </div>
 
           {/* Feature 4 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Versatile Content Types</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Versatile Content Types</h3>
             <p className="text-gray-600">
               From blogs and articles to website copy and product descriptions, we deliver diverse content.
             </p>
           </div>
 
           {/* Feature 5 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Thorough Research</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Thorough Research</h3>
             <p className="text-gray-600">
               We dive deep into your industry to ensure content that is accurate, relevant, and impactful.
             </p>
           </div>
 
           {/* Feature 6 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Timely Delivery</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Timely Delivery</h3>
             <p className="text-gray-600">
               We respect your deadlines and deliver high-quality content on time, every time.
             </p>

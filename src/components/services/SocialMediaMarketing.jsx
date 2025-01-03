@@ -17,52 +17,53 @@ const SocialMediaMarketing = () => {
       {/* Features Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
-          Why Choose Us for Social Media Marketing?
+          <span className="text-green-600">Why Choose Us for</span>{" "}
+          <span className="text-orange-600">Social Media Marketing?</span> 
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Feature 1 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Custom Strategies</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Custom Strategies</h3>
             <p className="text-gray-600">
               We create tailored social media strategies that align with your brand and business goals.
             </p>
           </div>
 
           {/* Feature 2 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Engaging Content Creation</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Engaging Content Creation</h3>
             <p className="text-gray-600">
               Our team designs captivating visuals and compelling posts that drive engagement.
             </p>
           </div>
 
           {/* Feature 3 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Targeted Advertising</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Targeted Advertising</h3>
             <p className="text-gray-600">
               Reach the right audience with precision through optimized social media ad campaigns.
             </p>
           </div>
 
           {/* Feature 4 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Analytics & Insights</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Analytics & Insights</h3>
             <p className="text-gray-600">
               We provide detailed reports and actionable insights to improve your campaign performance.
             </p>
           </div>
 
           {/* Feature 5 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Multi-Platform Expertise</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Multi-Platform Expertise</h3>
             <p className="text-gray-600">
               We manage your presence across platforms like Facebook, Instagram, Twitter, LinkedIn, and more.
             </p>
           </div>
 
           {/* Feature 6 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Consistent Branding</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Consistent Branding</h3>
             <p className="text-gray-600">
               Our strategies ensure your brand's voice and visuals remain consistent across all platforms.
             </p>

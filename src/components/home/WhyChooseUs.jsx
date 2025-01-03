@@ -29,7 +29,9 @@ const WhyChooseUs = () => {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-700 mb-4">Why Choose Us</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-700 mb-4">
+          <span className="text-green-900">Why</span>{" "} 
+            <span className="text-orange-600">Choose Us</span></h2>
           <p className="text-xl text-gray-600">
             Delivering excellence through innovation and expertise
           </p>
@@ -39,12 +41,12 @@ const WhyChooseUs = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="text-center p-6 rounded-lg hover:bg-gray-50 transition-colors"
+              className="text-center p-6 rounded-lg hover:bg-gray-50 transition-colors group"
             >
-              <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 text-green-600 mb-6">
+              <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 group-hover:text-gray-100 group-hover:bg-orange-600 text-green-600 mb-6">
                 <feature.icon className="h-8 w-8" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-orange-600">{feature.title}</h3>
               <p className="text-gray-600">{feature.description}</p>
             </div>
           ))}

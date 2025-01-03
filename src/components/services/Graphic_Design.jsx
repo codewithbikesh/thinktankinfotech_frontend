@@ -17,52 +17,53 @@ const Graphic_Design = () => {
       {/* Features Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
-          Why Choose Us for Your Graphic Design Needs?
+        <span className="text-green-600">Why Choose Us for Your</span>{" "}
+        <span className="text-orange-600">Graphic Design Needs?</span> 
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Feature 1 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Brand-Focused Designs</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Brand-Focused Designs</h3>
             <p className="text-gray-600">
               We create designs that tell your brand’s story and connect with your target audience.
             </p>
           </div>
 
           {/* Feature 2 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Versatile Creativity</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Versatile Creativity</h3>
             <p className="text-gray-600">
               From logos to brochures, social media graphics, and more, we deliver versatile designs.
             </p>
           </div>
 
           {/* Feature 3 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Attention to Detail</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Attention to Detail</h3>
             <p className="text-gray-600">
               Every element of your design is crafted with precision to create impactful visuals.
             </p>
           </div>
 
           {/* Feature 4 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Custom Solutions</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Custom Solutions</h3>
             <p className="text-gray-600">
               No templates here—we create custom designs tailored to your unique needs and goals.
             </p>
           </div>
 
           {/* Feature 5 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Brand Consistency</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Brand Consistency</h3>
             <p className="text-gray-600">
               We ensure your designs align with your brand’s identity across all platforms and media.
             </p>
           </div>
 
           {/* Feature 6 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Timely Delivery</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Timely Delivery</h3>
             <p className="text-gray-600">
               We value your time and ensure your designs are delivered on schedule, every time.
             </p>

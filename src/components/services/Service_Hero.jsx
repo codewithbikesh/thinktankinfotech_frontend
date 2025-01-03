@@ -10,7 +10,7 @@ const Service_Hero = ({ title, text, image, contactLink, buttonText2 }) => {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-700 mb-4 sm:mb-5">{title}</h1>
         <p className="text-base sm:text-lg text-gray-500 mb-4 sm:mb-5 text-justify">{text}</p>
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-5">
-          <Link to={contactLink} className="px-6 py-3 bg-green-700 text-white rounded-lg cursor-pointer w-full sm:w-auto">
+          <Link to={contactLink} className="px-6 py-3 hover:bg-orange-600 transition-all duration-300 ease-in-out bg-green-700 text-white rounded-lg cursor-pointer w-full sm:w-auto">
             {buttonText2}
           </Link>
         </div>

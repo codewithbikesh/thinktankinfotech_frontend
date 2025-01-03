@@ -17,52 +17,53 @@ const SEO = () => {
       {/* Features Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
-          Why Choose Us for SEO Services?
+        <span className="text-green-600">Why Choose Us for</span>{" "}
+        <span className="text-orange-600">SEO Services?</span> 
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Feature 1 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Custom SEO Strategies</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Custom SEO Strategies</h3>
             <p className="text-gray-600">
               We tailor our SEO plans to meet your unique business goals and target audience.
             </p>
           </div>
 
           {/* Feature 2 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Comprehensive Keyword Research</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Comprehensive Keyword Research</h3>
             <p className="text-gray-600">
               We identify the most relevant and high-performing keywords for your niche.
             </p>
           </div>
 
           {/* Feature 3 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">On-Page Optimization</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">On-Page Optimization</h3>
             <p className="text-gray-600">
               Optimize your website’s content, meta tags, and structure to improve rankings.
             </p>
           </div>
 
           {/* Feature 4 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Technical SEO</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Technical SEO</h3>
             <p className="text-gray-600">
               Ensure your website is fast, mobile-friendly, and crawlable by search engines.
             </p>
           </div>
 
           {/* Feature 5 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Quality Link Building</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Quality Link Building</h3>
             <p className="text-gray-600">
               Build a robust backlink profile with authoritative and relevant websites.
             </p>
           </div>
 
           {/* Feature 6 */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Regular Performance Reports</h3>
+          <div className="bg-white rounded-lg shadow-md p-6 group">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-orange-600">Regular Performance Reports</h3>
             <p className="text-gray-600">
               Get detailed insights into your SEO performance and progress with transparent reporting.
             </p>

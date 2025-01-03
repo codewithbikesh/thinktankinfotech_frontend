@@ -28,7 +28,7 @@ const Footer = () => {
                 <li key={item}>
                   <Link
                     to={`/${item.toLowerCase()}`}
-                    className="text-gray-400 hover:text-blue-400 transition-colors"
+                    className="text-gray-400 hover:text-orange-600 transition-colors"
                   >
                     {item}
                   </Link>
@@ -41,15 +41,15 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-2">
-              <li className="flex items-center space-x-2 text-gray-400">
+              <li className="flex items-center space-x-2 text-gray-400 hover:text-orange-600">
                 <Mail className="h-5 w-5" />
                 <a href='mailto::info@thinktankinfotech.com'>info@thinktankinfotech.com</a>
               </li>
-              <li className="flex items-center space-x-2 text-gray-400">
+              <li className="flex items-center space-x-2 text-gray-400 hover:text-orange-600">
                 <Phone className="h-5 w-5" />
                 <a href="tel:9856017621">+977-9856017621</a>
               </li>
-              <li className="flex items-center space-x-2 text-gray-400">
+              <li className="flex items-center space-x-2 text-gray-400 hover:text-orange-600">
                 <MapPin className="h-5 w-5" />
                 <span>Tokha-11, Baniyatar, Kathmandu</span>
               </li>
@@ -60,13 +60,13 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/thinktankinfotechpvtltd" target='_blank' className="text-gray-400 hover:text-blue-400 transition-colors">
+              <a href="https://www.facebook.com/thinktankinfotechpvtltd" target='_blank' className="text-gray-400 hover:text-orange-600 transition-colors">
                 <Facebook className="h-6 w-6" />
               </a>
-              <a href="https://www.instagram.com/thinktankinfotechpvtltd/" target='_blank' className="text-gray-400 hover:text-blue-400 transition-colors">
+              <a href="https://www.instagram.com/thinktankinfotechpvtltd/" target='_blank' className="text-gray-400 hover:text-orange-600 transition-colors">
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="https://linkedin.com/in/thinktankinfotechpvtltd/" target='_blank' className="text-gray-400 hover:text-blue-400 transition-colors">
+              <a href="https://linkedin.com/in/thinktankinfotechpvtltd/" target='_blank' className="text-gray-400 hover:text-orange-600 transition-colors">
                 <Linkedin className="h-6 w-6" />
               </a>
             </div>
