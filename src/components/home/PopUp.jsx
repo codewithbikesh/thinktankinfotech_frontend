@@ -4,14 +4,15 @@ const PopUp = () => {
   const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
-    // Check if the message has already been shown
-    const hasShownMessage = localStorage.getItem("hasShownMessage");
+    // Check if the user has visited before
+    const hasVisitedBefore = localStorage.getItem("hasVisitedBefore");
 
-    if (!hasShownMessage) {
+    // If the user hasn't visited before, show the pop-up and set the flag
+    if (!hasVisitedBefore) {
       setShowMessage(true);
 
-      // Set the flag in localStorage
-      localStorage.setItem("hasShownMessage", "true");
+      // Set the flag in localStorage to indicate that the user has visited
+      localStorage.setItem("hasVisitedBefore", "true");
 
       // Set a timer to hide the message after 5 seconds
       const timer = setTimeout(() => {
@@ -24,17 +25,10 @@ const PopUp = () => {
   }, []);
 
   return (
-    <div className="relative h-screen flex flex-col items-center justify-center">
-      {/* Main Homepage Content */}
-      <h1 className="text-3xl font-bold mb-4">Welcome to Our Software Development Services</h1>
-      <p className="text-lg text-gray-700 text-center max-w-3xl">
-        At our company, we specialize in crafting custom software solutions tailored to your needs. From web development to mobile apps, we bring your ideas to life with cutting-edge technology and expert developers. Let us help you achieve your business goals!
-      </p>
-
-      {/* Pop-up Message */}
+    <>
       {showMessage && (
-        <div className="fixed inset-0 flex items-center justify-center bg-opacity-60 bg-black z-50">
-          <div className="relative bg-green-500 text-white px-6 py-4 rounded shadow-lg text-center w-80">
+        <div className="fixed inset-0 flex items-center justify-center bg-opacity-60 bg-black z-50 transition-opacity duration-500 opacity-100">
+          <div className="relative bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg text-center w-full max-w-[800px] h-[500px] sm:max-w-[50%] sm:h-[auto] transform transition-all duration-500 scale-100 opacity-100">
             {/* Cancel Icon */}
             <button
               onClick={() => setShowMessage(false)}
@@ -54,11 +48,7 @@ const PopUp = () => {
           </div>
         </div>
       )}
-
-      <p className="mt-8 text-gray-600">
-        Ready to start? Reach out to us for a consultation and take the first step towards building something extraordinary.
-      </p>
-    </div>
+    </>
   );
 };
 

@@ -1,42 +1,75 @@
-const packageData = [
-    {
-      name: 'Free package',
-      price: 0.0,
-      invoiceDate: `Jan 13,2023`,
-      status: 'Paid',
-    },
-    {
-      name: 'Standard Package',
-      price: 59.0,
-      invoiceDate: `Jan 13,2023`,
-      status: 'Paid',
-    },
-    {
-      name: 'Business Package',
-      price: 99.0,
-      invoiceDate: `Jan 13,2023`,
-      status: 'Unpaid',
-    },
-    {
-      name: 'Standard Package',
-      price: 59.0,
-      invoiceDate: `Jan 13,2023`,
-      status: 'Pending',
-    },
-  ];
-  
-  const Team_List = () => {
-    return (
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchServices } from "../actions/servicesActions";
+import Breadcrumb from "../components/Breadcrumbs/Breadcrumb";
+
+// if (!Array.isArray(services)) {
+//   return <p>No valid data available</p>;
+// }
+const ServicesList = () => {
+  const dispatch = useDispatch();
+  const {
+    services = [],
+    loading,
+    error,
+  } = useSelector((state) => state.services);
+
+  useEffect(() => {
+    dispatch(fetchServices());
+  }, [dispatch]);
+
+  console.log("Services:", services); // Log the services value to inspect it
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  return (
+    <>
+      <Breadcrumb pageName="Services" />
+      <div className="flex flex-wrap items-center justify-between gap-3 sm:flex-nowrap p-2 rounded-sm border border-stroke bg-white px-5  pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
+        <div className="flex w-full flex-wrap gap-3 sm:gap-5">Services</div>
+        <Link
+          to={"/dashboard/services/create"}
+          className="inline-flex items-center justify-center gap-2.5 bg-blue-900 py-2 px-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-5"
+        >
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              className="fill-current"
+            >
+              <path d="M 12 2 C 6.4889971 2 2 6.4889971 2 12 C 2 17.511003 6.4889971 22 12 22 C 17.511003 22 22 17.511003 22 12 C 22 6.4889971 17.511003 2 12 2 z M 12 4 C 16.430123 4 20 7.5698774 20 12 C 20 16.430123 16.430123 20 12 20 C 7.5698774 20 4 16.430123 4 12 C 4 7.5698774 7.5698774 4 12 4 z M 11 7 L 11 11 L 7 11 L 7 13 L 11 13 L 11 17 L 13 17 L 13 13 L 17 13 L 17 11 L 13 11 L 13 7 L 11 7 z"></path>
+            </svg>
+          </span>
+          Add
+        </Link>
+      </div>
       <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
         <div className="max-w-full overflow-x-auto">
           <table className="w-full table-auto">
             <thead>
               <tr className="bg-gray-2 text-left dark:bg-meta-4">
-                <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
-                  Package
+                <th className="min-w-[80px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
+                  ID
+                </th>
+                <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white">
+                  Title
+                </th>
+                <th className="min-w-[300px] py-4 px-4 font-medium text-black dark:text-white">
+                  Description
                 </th>
                 <th className="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
-                  Invoice date
+                  Image
                 </th>
                 <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
                   Status
@@ -47,30 +80,45 @@ const packageData = [
               </tr>
             </thead>
             <tbody>
-              {packageData.map((packageItem, key) => (
-                <tr key={key}>
+              {services.map((service) => (
+                <tr key={service.id}>
                   <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                     <h5 className="font-medium text-black dark:text-white">
-                      {packageItem.name}
+                      {service.id}
                     </h5>
-                    <p className="text-sm">${packageItem.price}</p>
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <p className="text-black dark:text-white">
-                      {packageItem.invoiceDate}
+                      {service.title}
                     </p>
+                  </td>
+                  <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                    <p className="text-black dark:text-white">
+                      {service.description}
+                    </p>
+                  </td>
+                  <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                    <img
+                      src={`https://api.thinktankinfotech.com/public/${service.image}`}
+                      alt={service.title}
+                      className="w-16 h-16 object-cover rounded"
+                    />
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <p
                       className={`inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium ${
-                        packageItem.status === 'Paid'
-                          ? 'bg-success text-success'
-                          : packageItem.status === 'Unpaid'
-                          ? 'bg-danger text-danger'
-                          : 'bg-warning text-warning'
+                        service.is_active === 1
+                          ? "bg-success text-success"
+                          : service.is_active === 0
+                          ? "bg-danger text-danger"
+                          : "bg-warning text-warning"
                       }`}
                     >
-                      {packageItem.status}
+                      {service.is_active == 1
+                        ? "active"
+                        : service.is_active == 0
+                        ? "inactive"
+                        : "inactive"}
                     </p>
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
@@ -111,17 +159,15 @@ const packageData = [
                       </button>
                       <button className="hover:text-primary">
                         <svg
-                          className="fill-current"
+                          xmlns="http://www.w3.org/2000/svg"
+                          x="0px"
+                          y="0px"
                           width="18"
                           height="18"
-                          viewBox="0 0 18 18"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 32 32"
+                          className="fill-current"
                         >
-                          <path
-                            d="M16.2431 5.61625L12.7743 9.085L8.99985 5.30939L5.2313 9.085L1.7625 5.61625C1.48595 5.3397 1.48595 4.86099 1.7625 4.58443L2.43501 3.91193C2.71156 3.63537 3.19026 3.63537 3.46681 3.91193L7.23485 7.67863L11.5103 3.91193C11.7869 3.63537 12.2656 3.63537 12.5421 3.91193L13.2146 4.58443C13.4912 4.86099 13.4912 5.3397 13.2146 5.61625L9.74685 9.085L13.2146 12.5538C13.4912 12.8303 13.4912 13.3091 13.2146 13.5857L12.5421 14.2582C12.2656 14.5347 11.7869 14.5347 11.5103 14.2582L7.23485 10.4915L3.46681 14.2582C3.19026 14.5347 2.71156 14.5347 2.43501 14.2582L1.7625 13.5857C1.48595 13.3091 1.48595 12.8303 1.7625 12.5538L5.2313 9.085L8.99985 12.8535L12.7743 9.085L16.2431 5.61625Z"
-                            fill=""
-                          />
+                          <path d="M 23.90625 3.96875 C 22.859375 3.96875 21.8125 4.375 21 5.1875 L 5.1875 21 L 5.125 21.3125 L 4.03125 26.8125 L 3.71875 28.28125 L 5.1875 27.96875 L 10.6875 26.875 L 11 26.8125 L 26.8125 11 C 28.4375 9.375 28.4375 6.8125 26.8125 5.1875 C 26 4.375 24.953125 3.96875 23.90625 3.96875 Z M 23.90625 5.875 C 24.410156 5.875 24.917969 6.105469 25.40625 6.59375 C 26.378906 7.566406 26.378906 8.621094 25.40625 9.59375 L 24.6875 10.28125 L 21.71875 7.3125 L 22.40625 6.59375 C 22.894531 6.105469 23.402344 5.875 23.90625 5.875 Z M 20.3125 8.71875 L 23.28125 11.6875 L 11.1875 23.78125 C 10.53125 22.5 9.5 21.46875 8.21875 20.8125 Z M 6.9375 22.4375 C 8.136719 22.921875 9.078125 23.863281 9.5625 25.0625 L 6.28125 25.71875 Z"></path>
                         </svg>
                       </button>
                     </div>
@@ -132,8 +178,8 @@ const packageData = [
           </table>
         </div>
       </div>
-    );
-  };
-  
-  export default Team_List;
-  
+    </>
+  );
+};
+
+export default ServicesList;

@@ -5,6 +5,7 @@ import janam  from '../../assets/images/team/janam.jpeg';
 import pradip  from '../../assets/images/team/pradip.jpg';
 import dharmendra  from '../../assets/images/team/dharmendra.jpg';
 import harihar  from '../../assets/images/team/harihar.jpeg';
+import bishnuhari  from '../../assets/images/team/bishnuhari-tripathi.jpeg';
 
 const teamMembers = [
   {
@@ -47,6 +48,14 @@ const OurAdvisors = [
     linkedin: '#',
     email: '#',
   },
+  {
+    name: 'Bishnuhari Tripathi',
+    role: 'Senior Advisor',
+    corporation: '',
+    image: bishnuhari,
+    linkedin: '#',
+    email: '#',
+  }
 ];
 
 const TeamGrid = () => {

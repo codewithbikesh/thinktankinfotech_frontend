@@ -29,7 +29,8 @@ import Login from './components/admin/auth/Login';
 import PrivateRoute from './components/admin/auth/PrivateRoute'; // Import the PrivateRoute
 import DefaultLayout from './components/admin/dashboard/Dashboard';
 import Dashboard from './components/admin/dashboard/index';
-import Team_List from './components/admin/team/TeamList';
+import ServicesList from './components/admin/services/ServicesList';
+import AddService from './components/admin/services/AddService';
 
 // Frontend Layout (includes Navbar and Footer)
 const FrontendLayout = ({ children }) => (
@@ -79,7 +80,8 @@ function App() {
         {/* Protect the dashboard route */}
         {/* <Route path="/dashboard" element={<PrivateRoute><AdminLayout><Dashboard /></AdminLayout></PrivateRoute>} /> */}
         <Route path="/dashboard" element={<PrivateRoute><DefaultLayout><Dashboard /></DefaultLayout></PrivateRoute>} />
-        <Route path="/dashboard/team" element={<PrivateRoute><DefaultLayout><Team_List /></DefaultLayout></PrivateRoute>} />
+        <Route path="/dashboard/services" element={<PrivateRoute><DefaultLayout><ServicesList /></DefaultLayout></PrivateRoute>} />
+        <Route path="/dashboard/services/create" element={<PrivateRoute><DefaultLayout><AddService /></DefaultLayout></PrivateRoute>} />
       </Routes>
     </Router>
   );

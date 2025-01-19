@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 // Toast import
@@ -8,7 +8,6 @@ import { toast } from 'react-toastify';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -50,7 +49,7 @@ const Login = () => {
         <div className="bg-white p-8 rounded-lg shadow-md">
           <h1 className="text-2xl font-bold text-green-600">Login</h1>
           <p className="text-gray-500 mb-4">Sign in to your account</p>
-          {error && <p className="text-red-500">{error}</p>}
+          {/* {error && <p className="text-red-500">{error}</p>} */}
 
           <form onSubmit={handleLogin}>
             <div className="mb-4">
