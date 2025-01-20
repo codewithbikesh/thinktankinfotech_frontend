@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchServices } from "../actions/servicesActions";
+import { fetchServices, deleteService  } from "../actions/servicesActions";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumb";
 
 // if (!Array.isArray(services)) {
@@ -19,7 +19,11 @@ const ServicesList = () => {
     dispatch(fetchServices());
   }, [dispatch]);
 
-  console.log("Services:", services); // Log the services value to inspect it
+  const handleDelete = (serviceId) => {
+    if (window.confirm('Are you sure you want to delete this service?')) {
+      dispatch(deleteService(serviceId)); // Dispatch deleteService action with serviceId
+    }
+  };
 
   if (loading) {
     return <p>Loading...</p>;
@@ -99,7 +103,7 @@ const ServicesList = () => {
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <img
-                      src={`https://api.thinktankinfotech.com/public/${service.image}`}
+                      src={`https://api.thinktankinfotech.com/public${service.image}`}
                       alt={service.title}
                       className="w-16 h-16 object-cover rounded"
                     />
@@ -142,7 +146,7 @@ const ServicesList = () => {
                           />
                         </svg>
                       </button>
-                      <button className="hover:text-primary">
+                      <button className="hover:text-primary" onClick={() => handleDelete(service.id)}>
                         <svg
                           className="fill-current"
                           width="18"

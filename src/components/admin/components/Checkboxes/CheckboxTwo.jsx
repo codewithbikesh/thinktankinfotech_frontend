@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const CheckboxTwo = () => {
   // No need for type annotations, just initialize with a boolean value
-  const [isChecked, setIsChecked] = useState(false);
+const [isActive, setIsActive] = useState(false);
 
   return (
     <div>
@@ -16,15 +16,15 @@ const CheckboxTwo = () => {
             id="checkboxLabelTwo"
             className="sr-only"
             onChange={() => {
-              setIsChecked(!isChecked);
+              setIsActive(!isActive);
             }}
           />
           <div
             className={`mr-4 flex h-5 w-5 items-center justify-center rounded border ${
-              isChecked ? 'border-primary bg-gray dark:bg-transparent' : ''
+              isActive ? 'border-primary bg-gray dark:bg-transparent' : ''
             }`}
           >
-            <span className={`opacity-0 ${isChecked ? '!opacity-100' : ''}`}>
+            <span className={`opacity-0 ${isActive ? '!opacity-100' : ''}`}>
               <svg
                 width="11"
                 height="8"

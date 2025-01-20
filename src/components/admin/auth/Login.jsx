@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-
-// Toast import
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../actions/authActions';  // Adjust the import based on file structure
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.auth);  // Getting state from Redux
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
 
     // Check if both email and password are provided
     if (!email || !password) {
@@ -21,13 +22,8 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post('https://api.thinktankinfotech.com/api/login', {
-        email,
-        password,
-      });
-
-      // Save the authentication token in localStorage
-      localStorage.setItem('auth_token', response.data.token);
+      // Dispatch the login action
+      await dispatch(loginUser({ email, password }));
 
       // Show success toast
       toast.success('Login successful!');
@@ -35,11 +31,7 @@ const Login = () => {
       // Redirect to a protected page (e.g., dashboard)
       navigate('/dashboard');
     } catch (err) {
-      if (err.response && err.response.status === 401) {
-        toast.error('Incorrect email or password.');
-      } else {
-        toast.error('An error occurred. Please try again later.');
-      }
+      toast.error('Incorrect email or password.');
     }
   };
 
@@ -49,7 +41,8 @@ const Login = () => {
         <div className="bg-white p-8 rounded-lg shadow-md">
           <h1 className="text-2xl font-bold text-green-600">Login</h1>
           <p className="text-gray-500 mb-4">Sign in to your account</p>
-          {/* {error && <p className="text-red-500">{error}</p>} */}
+
+          {error && <p className="text-red-500">{error}</p>}
 
           <form onSubmit={handleLogin}>
             <div className="mb-4">
@@ -80,8 +73,9 @@ const Login = () => {
               <button
                 type="submit"
                 className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 focus:outline-none"
+                disabled={loading}
               >
-                Login
+                {loading ? 'Logging in...' : 'Login'}
               </button>
             </div>
           </form>

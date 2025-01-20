@@ -26,6 +26,7 @@ import Careers from './pages/Careers';
 
 // Admin Pages
 import Login from './components/admin/auth/Login';
+import Logout from './components/admin/auth/Logout';
 import PrivateRoute from './components/admin/auth/PrivateRoute'; // Import the PrivateRoute
 import DefaultLayout from './components/admin/dashboard/Dashboard';
 import Dashboard from './components/admin/dashboard/index';
@@ -75,10 +76,11 @@ function App() {
         <Route path="/careers" element={<FrontendLayout><Careers /></FrontendLayout>} />
         <Route path="/contact" element={<FrontendLayout><Contact /></FrontendLayout>} />
 
+
         {/* Admin Side Routes */}
         <Route path="/login/admin" element={<Login />} />
         {/* Protect the dashboard route */}
-        {/* <Route path="/dashboard" element={<PrivateRoute><AdminLayout><Dashboard /></AdminLayout></PrivateRoute>} /> */}
+        <Route path="/dashboard/logout" element={<PrivateRoute><DefaultLayout><Logout /></DefaultLayout></PrivateRoute>} />
         <Route path="/dashboard" element={<PrivateRoute><DefaultLayout><Dashboard /></DefaultLayout></PrivateRoute>} />
         <Route path="/dashboard/services" element={<PrivateRoute><DefaultLayout><ServicesList /></DefaultLayout></PrivateRoute>} />
         <Route path="/dashboard/services/create" element={<PrivateRoute><DefaultLayout><AddService /></DefaultLayout></PrivateRoute>} />
