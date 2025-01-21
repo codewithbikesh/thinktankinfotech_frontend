@@ -33,8 +33,6 @@ export const fetchServices = () => async (dispatch) => {
 
 
 
-
-
 // Function to create store service
 // Function to create store service
 export const createStoreService = (serviceData) => async (dispatch) => {
@@ -61,7 +59,7 @@ export const createStoreService = (serviceData) => async (dispatch) => {
       serviceData,
       {
         headers: {
-          "Content-Type": "application/json", // Ensure correct content type
+          'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`, // Add token to headers for authentication
         },
       }
@@ -108,8 +106,10 @@ export const deleteService = (serviceId) => async (dispatch) => {
       `/services/${serviceId}/delete/`, // Fixed string interpolation for serviceId
       {
         headers: {
+          "Content-Type": "application/json", // Ensure correct content type
           Authorization: `Bearer ${token}`, // Add token to headers for authentication
         },
+        withCredentials: true,  // Send cookies if your server requires it (optional)
       }
     );
 

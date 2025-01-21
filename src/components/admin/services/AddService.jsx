@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumb";
 import CheckboxTwo from "../components/Checkboxes/CheckboxTwo";
@@ -11,42 +11,48 @@ function AddService() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
   const { loading, error, success } = useSelector((state) => state.services);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+  
     if (file) {
-      setImage(file);
-      setImagePreview(URL.createObjectURL(file));
+      setImage(file); // Set the image file
+      setImagePreview(URL.createObjectURL(file)); // Set image preview
+  
+      // Clear the image error when a file is selected
+      setErrors((prev) => ({ ...prev, image: "" }));
     }
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Reset previous errors
     setErrors({});
 
+    // Basic validation for empty fields before submitting
     if (!title.trim()) {
       setErrors((prev) => ({ ...prev, title: "Title is required" }));
       return;
     }
-    if (description.trim().length > 5000) {
-      setErrors((prev) => ({
-        ...prev,
-        description: "Description cannot exceed 5000 characters",
-      }));
+
+    if (!description.trim()) {
+      setErrors((prev) => ({ ...prev, description: "Description is required" }));
       return;
     }
+
     if (!image) {
       setErrors((prev) => ({ ...prev, image: "Please select an image" }));
       return;
     }
 
+    // Prepare form data
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
@@ -54,26 +60,25 @@ function AddService() {
     formData.append("is_active", isActive ? "1" : "0");
 
     try {
+      // Dispatch the action to create the service and wait for the response
       await dispatch(createStoreService(formData));
 
+      // If backend validation passes, navigate and show success message
       toast.success("Service created successfully!");
-
-      // Navigate to the services dashboard after successful submission
       navigate("/dashboard/services");
 
+      // Reset the form fields after successful submission
       setTitle("");
       setDescription("");
       setImage(null);
       setImagePreview(null);
       setIsActive(false);
     } catch (err) {
-      if (err.response && err.response.data) {
-        setErrors(err.response.data.errors || {});
-        if (err.response.data.message) {
-          toast.error(err.response.data.message);
-        }
+      if (err.response && err.response.status === 422) {
+        // Set input-specific errors from the backend
+        setErrors(err.response.data.errors);
       } else {
-        setErrors({ general: "An error occurred. Please try again." });
+        // Fallback error if something goes wrong during submission
         toast.error("An error occurred. Please try again.");
       }
     }
@@ -162,7 +167,6 @@ function AddService() {
                 <CheckboxTwo
                   isChecked={isActive}
                   onChange={() => setIsActive(!isActive)}
-                  // Log the new value
                 />
               </div>
               <button
@@ -175,9 +179,6 @@ function AddService() {
               {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
               {success && (
                 <p className="mt-2 text-sm text-green-500">Service created successfully!</p>
-              )}
-              {errors.general && (
-                <p className="mt-2 text-sm text-red-500">{errors.general}</p>
               )}
             </div>
           </form>

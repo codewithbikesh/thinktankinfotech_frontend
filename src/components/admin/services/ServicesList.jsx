@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchServices, deleteService  } from "../actions/servicesActions";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumb";
-
+import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 // if (!Array.isArray(services)) {
 //   return <p>No valid data available</p>;
 // }
@@ -19,11 +20,45 @@ const ServicesList = () => {
     dispatch(fetchServices());
   }, [dispatch]);
 
-  const handleDelete = (serviceId) => {
-    if (window.confirm('Are you sure you want to delete this service?')) {
-      dispatch(deleteService(serviceId)); // Dispatch deleteService action with serviceId
-    }
+  const handleDelete = async (serviceId) => {
+    // Show confirmation modal
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Do you really want to delete this service? This action cannot be undone.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel',
+      width: '350px', // Adjust width
+      didOpen: () => {
+        // Set font size for title, text, and icon
+        Swal.getTitle().style.fontSize = '15px'; // Title font size
+        Swal.getText().style.fontSize = '12px'; // Text font size
+        Swal.getPopup().querySelector('.swal2-icon').style.fontSize = '12px'; // Icon font size
+      },
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await dispatch(deleteService(serviceId)); // Dispatch the action
+          toast.success('Service deleted successfully!');
+        } catch (error) {
+          const errorMessage =
+            error.response?.data?.message || 'Failed to delete service. Please try again.';
+          toast.error(errorMessage);
+        }
+      }
+    });
+  
+    // Adjust button styles to make them smaller after modal opens
+    Swal.getPopup().querySelectorAll('.swal2-confirm, .swal2-cancel').forEach((button) => {
+      button.style.fontSize = '15px'; // Smaller font size for buttons
+      button.style.padding = '5px 10px'; // Smaller padding
+      button.style.height = 'auto'; // Auto height to adjust with smaller padding
+    });
   };
+  
 
   if (loading) {
     return <p>Loading...</p>;
@@ -103,7 +138,7 @@ const ServicesList = () => {
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <img
-                      src={`https://api.thinktankinfotech.com/public${service.image}`}
+                      src={`http://127.0.0.1:8000${service.image}`}
                       alt={service.title}
                       className="w-16 h-16 object-cover rounded"
                     />
