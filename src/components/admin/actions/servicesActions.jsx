@@ -2,6 +2,7 @@
 import axios from './axiosConfig'; // Use the centralized Axios configuration
 
 // Function to fetch services
+// Function to fetch services
 export const fetchServices = () => async (dispatch) => {
   dispatch({ type: 'FETCH_SERVICES_REQUEST' });
 
@@ -27,6 +28,100 @@ export const fetchServices = () => async (dispatch) => {
     dispatch({
       type: 'FETCH_SERVICES_FAILURE',
       error: error.message,
+    });
+  }
+};
+
+
+
+// Function to edit a service
+// Function to edit a service
+export const editService = (serviceId) => async (dispatch) => {
+  // Dispatch the request action to indicate the API call is starting
+  dispatch({ type: "EDIT_SERVICE_REQUEST" });
+
+  try {
+    // Get the token from localStorage (or wherever it's stored)
+    const token = localStorage.getItem("auth_token"); // Use 'auth_token' or the appropriate key
+
+    // Check if token is missing
+    if (!token) {
+      console.error("Token not found in localStorage. Please log in again.");
+      dispatch({
+        type: "EDIT_SERVICE_FAILURE",
+        payload: "Token not found. Please log in again.",
+      });
+      return;
+    }
+
+    // Make the API request to fetch the service details
+    const response = await axios.get(
+      `/services/${serviceId}/edit`, // API endpoint for fetching the service details
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Add token to headers for authentication
+        },
+      }
+    );
+
+    // Dispatch the success action with the fetched service data
+    dispatch({
+      type: "EDIT_SERVICE_SUCCESS",
+      payload: response.data,
+    });
+  } catch (error) {
+    // Dispatch the failure action with the error message
+    dispatch({
+      type: "EDIT_SERVICE_FAILURE",
+      payload: error.response?.data?.message || error.message, // Better error handling
+    });
+  }
+};
+
+
+
+// Function to update a service
+// Function to update a service
+export const updateService = (serviceId, updatedData) => async (dispatch) => {
+  // Dispatch the request action to indicate the API call is starting
+  dispatch({ type: "UPDATE_SERVICE_REQUEST" });
+
+  try {
+    // Get the token from localStorage (or wherever it's stored)
+    const token = localStorage.getItem("auth_token");
+
+    // Check if the token is missing
+    if (!token) {
+      console.error("Token not found in localStorage. Please log in again.");
+      dispatch({
+        type: "UPDATE_SERVICE_FAILURE",
+        payload: "Token not found. Please log in again.",
+      });
+      return;
+    }
+
+    // Make the API request to update the service
+    const response = await axios.put(
+      `/services/${serviceId}/update/`, // API endpoint for updating the service
+      updatedData,
+      {
+        headers: {
+         'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`, // Add token to headers for authentication
+        },
+      }
+    );
+
+    // Dispatch the success action with the updated service data
+    dispatch({
+      type: "UPDATE_SERVICE_SUCCESS",
+      payload: response.data,
+    });
+  } catch (error) {
+    // Dispatch the failure action with the error message
+    dispatch({
+      type: "UPDATE_SERVICE_FAILURE",
+      payload: error.response?.data?.message || error.message, // Better error handling
     });
   }
 };

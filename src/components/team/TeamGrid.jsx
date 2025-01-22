@@ -58,6 +58,27 @@ const OurAdvisors = [
   }
 ];
 
+// Marketing Team Member deta here 
+const MarketingTeamMembers = [
+  {
+    name: '',
+    role: '',
+    corporation: '',
+    image: harihar,
+    linkedin: '#',
+    email: '#',
+  },
+  {
+    name: 'Bishnuhari Tripathi',
+    role: 'Senior Advisor',
+    corporation: '',
+    image: bishnuhari,
+    linkedin: '#',
+    email: '#',
+  }
+];
+
+
 const TeamGrid = () => {
   return (
     <>

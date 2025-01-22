@@ -7,6 +7,7 @@ const initialState = {
 
 const servicesReducer = (state = initialState, action) => {
   switch (action.type) {
+
     // Fetch services data
     case 'FETCH_SERVICES_REQUEST':
       return {
@@ -14,11 +15,9 @@ const servicesReducer = (state = initialState, action) => {
         loading: true,
       };
     case 'FETCH_SERVICES_SUCCESS':
-      // console.log('Payload:', action.payload);
       return {
         ...state,
         loading: false,
-        // Ensure that the payload is in the correct format
         services: Array.isArray(action.payload.data) ? action.payload.data : [],
         token: action.payload.token,
       };
@@ -29,54 +28,96 @@ const servicesReducer = (state = initialState, action) => {
         error: action.error,
       };
 
-      
     // Create store services
     case 'CREATE_STORE_SERVICE_REQUEST':
       return {
         ...state,
         loading: true,
       };
-    case 'CREATE_STORE_SERVICE_SUCCESS':  // Corrected action type
+    case 'CREATE_STORE_SERVICE_SUCCESS':
       return {
         ...state,
         loading: false,
         storeServices: Array.isArray(action.payload.data) ? action.payload.data : [],
         token: action.payload.token,
       };
-    case 'CREATE_STORE_SERVICE_FAILURE':  // Corrected action type
+    case 'CREATE_STORE_SERVICE_FAILURE':
       return {
         ...state,
         loading: false,
         error: action.error,
       };
 
+    // Update service
+    case 'UPDATE_SERVICE_REQUEST':
+      return {
+        ...state,
+        loading: true,
+      };
+    case 'UPDATE_SERVICE_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        services: state.services.map((service) =>
+          service.id === action.payload.id ? { ...service, ...action.payload } : service
+        ),
+        error: null,
+      };
+    case 'UPDATE_SERVICE_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+      };
 
-     // Delete service
-     // Delete service
-case 'DELETE_SERVICE_REQUEST':
-  return {
-    ...state,
-    loading: true,
-  };
+    // Edit service
+    case 'EDIT_SERVICE_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case 'EDIT_SERVICE_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        services: state.services.map((service) =>
+          service.id === action.payload.id ? { ...service, ...action.payload } : service
+        ),
+        error: null,
+      };
+    case 'EDIT_SERVICE_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
 
-case 'DELETE_SERVICE_SUCCESS':
-  // Filter out the deleted service from the state
-  const updatedServices = state.services.filter(service => service.id !== action.payload.deletedServiceId);
-  return {
-    ...state,
-    loading: false,
-    services: updatedServices,
-    token: action.payload.token,  // If token is updated after deletion, keep it.
-    error: null,  // Reset any previous errors
-  };
-
-case 'DELETE_SERVICE_FAILURE':
-  return {
-    ...state,
-    loading: false,
-    error: action.payload.error,  // Assuming the error is passed as payload
-  };
-
+      
+    // Delete service
+    // Delete service
+    case 'DELETE_SERVICE_REQUEST':
+      return {
+        ...state,
+        loading: true,
+      };
+    case 'DELETE_SERVICE_SUCCESS':
+      const updatedServices = state.services.filter(
+        (service) => service.id !== action.payload.deletedServiceId
+      );
+      return {
+        ...state,
+        loading: false,
+        services: updatedServices,
+        token: action.payload.token,
+        error: null,
+      };
+    case 'DELETE_SERVICE_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+      };
 
     default:
       return state;

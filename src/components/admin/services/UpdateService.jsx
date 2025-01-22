@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumb";
 import CheckboxTwo from "../components/Checkboxes/CheckboxTwo";
-import { createStoreService } from "../actions/servicesActions";
+import { fetchServices, updateService } from "../actions/servicesActions";
 import { toast } from "react-toastify";
 
-function AddService() {
+function UpdateService() {
+  const { id } = useParams(); // Get service ID from the route
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
@@ -16,39 +17,52 @@ function AddService() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, success } = useSelector((state) => state.services);
+
+  // Select data from the Redux state
+  const { services, loading, error } = useSelector((state) => state.services);
+  const serviceDetails = services.find((service) => service.id === Number(id));
+
+  // Fetch services when the component mounts
+  useEffect(() => {
+    if (!services.length) {
+      console.log("Fetching services...");
+      dispatch(fetchServices());
+    } else {
+      console.log("Services loaded:", services);
+    }
+  }, [dispatch, services]);
+
+  // Load service details into the form
+  useEffect(() => {
+    if (serviceDetails) {
+      console.log("Service Details:", serviceDetails);
+      setTitle(serviceDetails.title || "");
+      setDescription(serviceDetails.description || "");
+      setIsActive(serviceDetails.is_active === "1");
+      setImagePreview(serviceDetails.image_url || null);
+    }
+  }, [serviceDetails]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-  
     if (file) {
-      setImage(file); // Set the image file
-      setImagePreview(URL.createObjectURL(file)); // Set image preview
-  
-      // Clear the image error when a file is selected
+      setImage(file);
+      setImagePreview(URL.createObjectURL(file));
       setErrors((prev) => ({ ...prev, image: "" }));
     }
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Reset previous errors
     setErrors({});
 
-    // Basic validation for empty fields before submitting
+    // Basic validation
     if (!title.trim()) {
       setErrors((prev) => ({ ...prev, title: "Title is required" }));
       return;
     }
-
     if (!description.trim()) {
       setErrors((prev) => ({ ...prev, description: "Description is required" }));
-      return;
-    }
-
-    if (!image) {
-      setErrors((prev) => ({ ...prev, image: "Please select an image" }));
       return;
     }
 
@@ -56,37 +70,35 @@ function AddService() {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
-    formData.append("image", image);
+    if (image) formData.append("image", image); // Only include image if changed
     formData.append("is_active", isActive ? "1" : "0");
 
     try {
-      // Dispatch the action to create the service and wait for the response
-      await dispatch(createStoreService(formData));
-
-      // If backend validation passes, navigate and show success message
-      toast.success("Service created successfully!");
-      navigate("/dashboard/services");
-
-      // Reset the form fields after successful submission
-      setTitle("");
-      setDescription("");
-      setImage(null);
-      setImagePreview(null);
-      setIsActive(false);
+      // Dispatch the update action
+      await dispatch(updateService(id, formData));
+      toast.success("Service updated successfully!");
+      navigate("/dashboard/services"); // Redirect to services page
     } catch (err) {
+      console.error("Error updating service:", err);
       if (err.response && err.response.status === 422) {
-        // Set input-specific errors from the backend
         setErrors(err.response.data.errors);
       } else {
-        // Fallback error if something goes wrong during submission
         toast.error("An error occurred. Please try again.");
       }
     }
   };
 
+  if (loading || !services.length || !serviceDetails) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p>Loading service details...</p>
+      </div>
+    );
+  }
+
   return (
     <>
-      <Breadcrumb pageName="Add Service" />
+      <Breadcrumb pageName="Update Service" />
       <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
         <div className="max-w-full overflow-x-auto">
           <form
@@ -98,7 +110,6 @@ function AddService() {
                 to={"/dashboard/services"}
                 className="inline-flex items-center justify-center gap-2.5 bg-blue-900 py-2 px-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-5"
               >
-                
                 Back
               </Link>
             </div>
@@ -162,12 +173,9 @@ function AddService() {
                 className="inline-flex items-center justify-center gap-2.5 bg-blue-900 py-2 px-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-5"
                 disabled={loading}
               >
-                {loading ? "Submitting..." : "Submit"}
+                {loading ? "Updating..." : "Update"}
               </button>
               {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-              {success && (
-                <p className="mt-2 text-sm text-green-500">Service created successfully!</p>
-              )}
             </div>
           </form>
         </div>
@@ -176,4 +184,4 @@ function AddService() {
   );
 }
 
-export default AddService;
+export default UpdateService;

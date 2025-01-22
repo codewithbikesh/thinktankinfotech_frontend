@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Brain, Facebook, Twitter, Linkedin, Mail, Phone, MapPin, Instagram } from 'lucide-react';
 import Think from '../../assets/images/think_tank_info_tech_white.png';
+import FooterLinks from './FooterLinks';
 
 const Footer = () => {
   return (
@@ -72,9 +73,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} Think Tank Info Tech. All rights reserved.</p>
+        <FooterLinks />
+          <p>&copy; 2024 - {new Date().getFullYear()} Think Tank Info Tech. All rights reserved.</p>
         </div>
       </div>
     </footer>

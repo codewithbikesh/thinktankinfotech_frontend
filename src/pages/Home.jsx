@@ -6,7 +6,7 @@ import Testimonials from '../components/home/Testimonials';
 import PopUp from '../components/home/PopUp';
 import ClientCard from '../components/our-clients/ClientCard';
 import banner  from '../assets/images/hero_background.png';
-
+import CallToAction from "../components/services/CallToAction";
 const Home = () => {
   return (
     <div>
@@ -23,6 +23,7 @@ const Home = () => {
       {/* <Testimonials /> */}
        <ClientCard />
        <PopUp />
+       <CallToAction />
     </div>
   );
 };

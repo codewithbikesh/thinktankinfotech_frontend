@@ -32,6 +32,7 @@ import DefaultLayout from './components/admin/dashboard/Dashboard';
 import Dashboard from './components/admin/dashboard/index';
 import ServicesList from './components/admin/services/ServicesList';
 import AddService from './components/admin/services/AddService';
+import UpdateService from './components/admin/services/UpdateService';
 
 // Frontend Layout (includes Navbar and Footer)
 const FrontendLayout = ({ children }) => (
@@ -79,11 +80,17 @@ function App() {
 
         {/* Admin Side Routes */}
         <Route path="/login/admin" element={<Login />} />
+        
         {/* Protect the dashboard route */}
         <Route path="/dashboard/logout" element={<PrivateRoute><DefaultLayout><Logout /></DefaultLayout></PrivateRoute>} />
         <Route path="/dashboard" element={<PrivateRoute><DefaultLayout><Dashboard /></DefaultLayout></PrivateRoute>} />
+
+
+        {/* Admin Side Services Routes */}
         <Route path="/dashboard/services" element={<PrivateRoute><DefaultLayout><ServicesList /></DefaultLayout></PrivateRoute>} />
         <Route path="/dashboard/services/create" element={<PrivateRoute><DefaultLayout><AddService /></DefaultLayout></PrivateRoute>} />
+        <Route path="/dashboard/services/:id/edit" element={<PrivateRoute><DefaultLayout><UpdateService /></DefaultLayout></PrivateRoute>} />
+        {/* <Route path="/dashboard/services/update/:id" element={<PrivateRoute><DefaultLayout><UpdateService /></DefaultLayout></PrivateRoute>} /> */}
       </Routes>
     </Router>
   );
