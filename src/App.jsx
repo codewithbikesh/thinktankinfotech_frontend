@@ -23,6 +23,9 @@ import Team from './pages/Team';
 import Contact from './pages/Contact';
 import Services from './pages/Services';
 import Careers from './pages/Careers';
+import Faq from './pages/Faq';
+import TermsAndCondition from './pages/TermsAndCondition';
+
 
 // Admin Pages
 import Login from './components/admin/auth/Login';
@@ -76,6 +79,9 @@ function App() {
         <Route path="/team" element={<FrontendLayout><Team /></FrontendLayout>} />
         <Route path="/careers" element={<FrontendLayout><Careers /></FrontendLayout>} />
         <Route path="/contact" element={<FrontendLayout><Contact /></FrontendLayout>} />
+        <Route path="/faq" element={<FrontendLayout><Faq /></FrontendLayout>} />
+        <Route path="/terms-and-conditions" element={<FrontendLayout><TermsAndCondition /></FrontendLayout>} />
+
 
 
         {/* Admin Side Routes */}
@@ -90,7 +96,6 @@ function App() {
         <Route path="/dashboard/services" element={<PrivateRoute><DefaultLayout><ServicesList /></DefaultLayout></PrivateRoute>} />
         <Route path="/dashboard/services/create" element={<PrivateRoute><DefaultLayout><AddService /></DefaultLayout></PrivateRoute>} />
         <Route path="/dashboard/services/:id/edit" element={<PrivateRoute><DefaultLayout><UpdateService /></DefaultLayout></PrivateRoute>} />
-        {/* <Route path="/dashboard/services/update/:id" element={<PrivateRoute><DefaultLayout><UpdateService /></DefaultLayout></PrivateRoute>} /> */}
       </Routes>
     </Router>
   );

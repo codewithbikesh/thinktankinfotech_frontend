@@ -3,10 +3,11 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumb";
 import CheckboxTwo from "../components/Checkboxes/CheckboxTwo";
-import { fetchServices, updateService } from "../actions/servicesActions";
+import { editService, updateService } from "../actions/servicesActions";
 import { toast } from "react-toastify";
 
 function UpdateService() {
+
   const { id } = useParams(); // Get service ID from the route
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -26,7 +27,7 @@ function UpdateService() {
   useEffect(() => {
     if (!services.length) {
       console.log("Fetching services...");
-      dispatch(fetchServices());
+      dispatch(editService());
     } else {
       console.log("Services loaded:", services);
     }
@@ -35,58 +36,66 @@ function UpdateService() {
   // Load service details into the form
   useEffect(() => {
     if (serviceDetails) {
-      console.log("Service Details:", serviceDetails);
+      console.log("Service Details:", serviceDetails); // Log service details
       setTitle(serviceDetails.title || "");
       setDescription(serviceDetails.description || "");
       setIsActive(serviceDetails.is_active === "1");
-      setImagePreview(serviceDetails.image_url || null);
+      setImagePreview(serviceDetails.image || null);
     }
   }, [serviceDetails]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
+      // Revoke previous object URL (if any) to avoid memory leaks
+      if (imagePreview && image instanceof File) {
+        URL.revokeObjectURL(imagePreview);
+      }
       setImage(file);
       setImagePreview(URL.createObjectURL(file));
       setErrors((prev) => ({ ...prev, image: "" }));
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErrors({});
+  
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setErrors({});
 
-    // Basic validation
-    if (!title.trim()) {
-      setErrors((prev) => ({ ...prev, title: "Title is required" }));
-      return;
-    }
-    if (!description.trim()) {
-      setErrors((prev) => ({ ...prev, description: "Description is required" }));
-      return;
-    }
+  if (!title.trim()) {
+    setErrors((prev) => ({ ...prev, title: "Title is required" }));
+    return;
+  }
+  if (!description.trim()) {
+    setErrors((prev) => ({ ...prev, description: "Description is required" }));
+    return;
+  }
 
-    // Prepare form data
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("description", description);
-    if (image) formData.append("image", image); // Only include image if changed
-    formData.append("is_active", isActive ? "1" : "0");
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("description", description);
+  if (image) formData.append("image", image); // Only include image if changed
+  formData.append("is_active", isActive ? "1" : "0");
 
-    try {
-      // Dispatch the update action
-      await dispatch(updateService(id, formData));
-      toast.success("Service updated successfully!");
-      navigate("/dashboard/services"); // Redirect to services page
-    } catch (err) {
-      console.error("Error updating service:", err);
-      if (err.response && err.response.status === 422) {
-        setErrors(err.response.data.errors);
-      } else {
-        toast.error("An error occurred. Please try again.");
-      }
+  // Debug FormData
+  for (let [key, value] of formData.entries()) {
+    console.log(`${key}:`, value);
+  }
+
+  try {
+    await dispatch(updateService(id, formData));
+    toast.success("Service updated successfully!");
+    navigate("/dashboard/services");
+  } catch (err) {
+    console.error("Error updating service:", err);
+    if (err.response && err.response.status === 422) {
+      setErrors(err.response.data.errors); // Show validation errors from backend
+    } else {
+      toast.error("An error occurred. Please try again.");
     }
-  };
+  }
+}
+
 
   if (loading || !services.length || !serviceDetails) {
     return (
@@ -156,7 +165,7 @@ function UpdateService() {
 
                 {imagePreview && (
                   <img
-                    src={imagePreview}
+                    src={image instanceof File ? URL.createObjectURL(image) : `http://127.0.0.1:8000${imagePreview}`}
                     alt="Selected preview"
                     className="mt-4 h-40 w-40 object-cover rounded-md border"
                   />

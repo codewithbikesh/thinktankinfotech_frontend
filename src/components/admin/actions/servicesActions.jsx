@@ -59,6 +59,7 @@ export const editService = (serviceId) => async (dispatch) => {
       `/services/${serviceId}/edit`, // API endpoint for fetching the service details
       {
         headers: {
+          'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`, // Add token to headers for authentication
         },
       }

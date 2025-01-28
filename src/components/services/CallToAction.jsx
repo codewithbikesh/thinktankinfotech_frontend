@@ -6,7 +6,9 @@ function CallToAction() {
   return (
     <div
       className="relative p-5 mt-5 shadow-md bg-cover bg-center"
-      style={{ backgroundImage: `url(${coverImage})` }}
+      style={{ backgroundImage: `url(${coverImage})` }}  
+      data-aos="fade-up"
+      data-aos-duration="1000"
     >
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-gray-900 opacity-75"></div>
