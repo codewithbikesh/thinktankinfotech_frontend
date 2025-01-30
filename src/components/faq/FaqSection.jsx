@@ -81,23 +81,25 @@ const FaqSection = () => {
 
   return (
     <div className="container mx-auto mt-8">
+    <h2 className="text-3xl font-bold text-green-800 text-center"><span className="text-green-600">FA</span><span className="text-orange-400">Qs</span></h2>
+    <p className="text-xl text-gray-600 text-center mb-6">Find answers to the most commonly asked questions below!</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Column: Header + Image */}
         <div>
           <div className="mb-6 text-center md:text-left">
             {/* Supports + Line */}
-            <div className="flex items-center gap-2">
+            {/* <div className="flex items-center gap-2">
               <h3 className="text-xl font-bold text-gray-800 uppercase">
                 Supports
               </h3>
               <span className="flex-1 border-t border-gray-300"></span>
-            </div>
+            </div> */}
             {/* FAQ Heading */}
-            <h2 className="text-3xl font-bold text-orange-600 mt-4">
+            <h2 className="text-3xl sm:text-2xl font-bold text-orange-400 mt-4">
               Frequently Asked Questions
             </h2>
             {/* Description */}
-            <p className="text-gray-600 font-semibold mt-3">
+            <p className="text-gray-600 font-semibold mt-3 text-justify">
               Welcome to our FAQ section! Here you'll find quick answers to the
               most common questions about our products and services.
             </p>
@@ -128,7 +130,7 @@ const FaqSection = () => {
                 >
                   <span
                     className={`text-lg font-medium transition-colors ${
-                      openFaq === faq.id ? "text-orange-600" : "text-gray-800"
+                      openFaq === faq.id ? "text-orange-400" : "text-gray-800"
                     }`}
                   >
                     {faq.question}

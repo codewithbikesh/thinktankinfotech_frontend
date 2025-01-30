@@ -66,7 +66,7 @@ const OurClients = () => {
   const infiniteClients = [...clients, ...clients];
 
   return (
-    <section className="bg-gray-50 py-12 overflow-hidden">
+    <section className="bg-gray-50 py-5 lg:py-10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-700 mb-4">
         <span className="text-green-900">Our</span>{" "}

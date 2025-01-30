@@ -3,9 +3,10 @@ import { Linkedin, Mail } from 'lucide-react';
 import bikesh  from '../../assets/images/team/bikesh.jpg';
 import janam  from '../../assets/images/team/janam.jpeg';
 import pradip  from '../../assets/images/team/pradip.jpg';
-import dharmendra  from '../../assets/images/team/dharmendra.jpg';
+import dharmendra  from '../../assets/images/team/dharmendra.jpeg';
 import harihar  from '../../assets/images/team/harihar.jpeg';
 import bishnuhari  from '../../assets/images/team/bishnuhari-tripathi.jpeg';
+import  employee  from '../../assets/images/employee.png';
 
 const teamMembers = [
   {
@@ -38,28 +39,102 @@ const teamMembers = [
   },
 ];
 
+
 // Our advisors deta here 
-const OurAdvisors = [
+const DevelopmentTeamMembers = [
   {
-    name: 'Harihar Kadel',
-    role: 'Senior Advisor',
-    corporation: 'Oracle Corporation',
-    image: harihar,
+    name: 'Employee Name',
+    role: 'Employee Role',
+    image: employee,
     linkedin: '#',
     email: '#',
   },
   {
-    name: 'Bishnuhari Tripathi',
-    role: 'Senior Advisor',
-    corporation: '',
-    image: bishnuhari,
+    name: 'Employee Name',
+    role: 'Employee Role',
+    image: employee,
+    linkedin: '#',
+    email: '#',
+  },
+  {
+    name: 'Employee Name',
+    role: 'Employee Role',
+    image: employee,
+    linkedin: '#',
+    email: '#',
+  },
+  {
+    name: 'Employee Name',
+    role: 'Employee Role',
+    image: employee,
+    linkedin: '#',
+    email: '#',
+  },
+  {
+    name: 'Employee Name',
+    role: 'Employee Role',
+    image: employee,
+    linkedin: '#',
+    email: '#',
+  },
+  {
+    name: 'Employee Name',
+    role: 'Employee Role',
+    image: employee,
+    linkedin: '#',
+    email: '#',
+  },
+  {
+    name: 'Employee Name',
+    role: 'Employee Role',
+    image: employee,
+    linkedin: '#',
+    email: '#',
+  },
+  {
+    name: 'Employee Name',
+    role: 'Employee Role',
+    image: employee,
+    linkedin: '#',
+    email: '#',
+  }
+];
+
+
+// Our advisors deta here 
+const MarketingTeamMembers = [
+  {
+    name: 'Employee Name',
+    role: 'Employee Role',
+    image: employee,
+    linkedin: '#',
+    email: '#',
+  },
+  {
+    name: 'Employee Name',
+    role: 'Employee Role',
+    image: employee,
+    linkedin: '#',
+    email: '#',
+  },
+  {
+    name: 'Employee Name',
+    role: 'Employee Role',
+    image: employee,
+    linkedin: '#',
+    email: '#',
+  },
+  {
+    name: 'Employee Name',
+    role: 'Employee Role',
+    image: employee,
     linkedin: '#',
     email: '#',
   }
 ];
 
 // Marketing Team Member deta here 
-const MarketingTeamMembers = [
+const OurAdvisors = [
   {
     name: '',
     role: '',
@@ -87,8 +162,8 @@ const TeamGrid = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-gray-700 mb-4" data-aos="zoom-in">
-          <span className="text-green-700">Meet</span>{" "}
-          <span className="text-orange-600">Our Team</span>
+          <span className="text-green-700">Leadership</span>{" "}
+          <span className="text-orange-600">Team</span>
           </h2>
           <p className="text-xl text-gray-600" data-aos="zoom-in">
             The brilliant minds behind our success
@@ -128,6 +203,109 @@ const TeamGrid = () => {
         </div>
       </div>
     </section>
+    
+
+ {/* Add Development Team Members  details here  */}
+ <section className="py-5 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-gray-700 mb-4" data-aos="zoom-in">
+          <span className="text-green-700">Development</span>{" "}
+          <span className="text-orange-600">Team</span>
+           </h2>
+          {/* <p className="text-xl text-gray-600">
+            The brilliant minds behind our success
+          </p> */}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-aos="fade-up" data-aos-duration="1000">
+          {DevelopmentTeamMembers.map((member, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
+            >
+            <div className="flex justify-center items-center my-4">
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-64 h-64 rounded-full object-cover"
+              />
+               </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-1 group-hover:text-orange-600">{member.name}</h3>
+                <p className="text-gray-600 mb-1">{member.role}</p>
+                <p className="text-gray-600">{member.corporation}</p>
+                <div className="flex space-x-4">
+                  <a
+                    href={member.linkedin}
+                    className="text-gray-400 group-hover:text-orange-600 transition-colors"
+                  >
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                  <a
+                    href={`mailto:${member.email}`}
+                    className="text-gray-400 group-hover:text-orange-600 transition-colors"
+                  >
+                    <Mail className="h-5 w-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    {/* Add Marketing Team Members  details here  */}
+    <section className="py-5 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-gray-700 mb-4" data-aos="zoom-in">
+          <span className="text-green-700">Marketing</span>{" "}
+          <span className="text-orange-600">Team</span>
+           </h2>
+          {/* <p className="text-xl text-gray-600">
+            The brilliant minds behind our success
+          </p> */}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-aos="fade-up" data-aos-duration="1000">
+          {MarketingTeamMembers.map((member, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
+            >
+            <div className="flex justify-center items-center my-4">
+              <img
+                src={member.image}
+                alt={member.name}
+                className="w-64 h-64 rounded-full object-cover"
+              />
+               </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-1 group-hover:text-orange-600">{member.name}</h3>
+                <p className="text-gray-600 mb-1">{member.role}</p>
+                <p className="text-gray-600">{member.corporation}</p>
+                <div className="flex space-x-4">
+                  <a
+                    href={member.linkedin}
+                    className="text-gray-400 group-hover:text-orange-600 transition-colors"
+                  >
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                  <a
+                    href={`mailto:${member.email}`}
+                    className="text-gray-400 group-hover:text-orange-600 transition-colors"
+                  >
+                    <Mail className="h-5 w-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
     
     {/* Add advisor details here  */}
     <section className="py-5 bg-gray-50">

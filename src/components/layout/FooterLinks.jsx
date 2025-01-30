@@ -5,7 +5,7 @@ function FooterLinks() {
     <ul className="flex justify-center items-center flex-wrap gap-2 p-2">
       <li>
         <Link to="/faq" className="hover:text-orange-400 transition">
-          FAQ
+          FAQs
         </Link>
       </li>|
       <li>
@@ -17,9 +17,9 @@ function FooterLinks() {
         </Link>
       </li>|
       <li>
-        <a href="#" className="hover:text-orange-400 transition">
+        <Link to="/privacy-policy" className="hover:text-orange-400 transition">
           Privacy Policy
-        </a>
+        </Link>
       </li>
     </ul>
   );

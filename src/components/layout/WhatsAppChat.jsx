@@ -1,6 +1,7 @@
 import React from "react";
 import chatImage from "../../assets/images/lets_chat.svg";
-import whatsappLogo from "../../assets/images/whatsapp.svg";
+// import whatsappLogo from "../../assets/images/whatsapp.svg";
+import whatsappLogo from "../../assets/images/whatsapp.gif";
 function WhatsAppChat() {
   return (
     <div className="fixed bottom-[9%] right-[3.5%] z-[99]">
@@ -12,7 +13,7 @@ function WhatsAppChat() {
     <a href="https://api.whatsapp.com/send?phone=9779856017621" target="_blank" rel="noopener noreferrer">
       <img
         src={whatsappLogo}
-        className="w-20 h-20" // You can adjust the size here
+        className="w-35 h-35" // You can adjust the size here
         alt="whatsapp"
       />
     </a>

@@ -7,7 +7,7 @@ const ContentWriting = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       <Service_Hero
-        title="Content Writing"
+        title="Content Writing Services"
         text="Engage and inspire your audience with meaningful content that resonates with their needs and interests. Our content writing services are designed to help your brand stand out with well-researched, creative, and SEO-optimized content. Whether it's blog posts, website copy, product descriptions, or social media content, we deliver words that connect with your audience and drive results."
         image={ContentWritingImage} // Update with an appropriate content writing image
         contactLink="/contact"
@@ -18,7 +18,7 @@ const ContentWriting = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
         <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
         <span className="text-green-600">Why Choose Us for</span>{" "}
-        <span className="text-orange-600">Content Writing?</span> 
+        <span className="text-orange-600">Content Writing Services?</span> 
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Feature 1 */}

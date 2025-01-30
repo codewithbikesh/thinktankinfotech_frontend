@@ -25,6 +25,7 @@ import Services from './pages/Services';
 import Careers from './pages/Careers';
 import Faq from './pages/Faq';
 import TermsAndCondition from './pages/TermsAndCondition';
+import PrivacyPolicy from './pages/PrivacyAndPolicy';
 
 
 // Admin Pages
@@ -74,13 +75,14 @@ function App() {
         <Route path="/services/ui-ux-design" element={<FrontendLayout><UIDesign /></FrontendLayout>} />
         <Route path="/services/graphic-design" element={<FrontendLayout><Graphic_Design /></FrontendLayout>} />
         <Route path="/services/social-media-marketing" element={<FrontendLayout><SocialMediaMarketing /></FrontendLayout>} />
-        <Route path="/services/content-writing" element={<FrontendLayout><ContentWriting /></FrontendLayout>} />
+        <Route path="/services/content-writing-services" element={<FrontendLayout><ContentWriting /></FrontendLayout>} />
         <Route path="/services/search-engine-optimization" element={<FrontendLayout><SEO /></FrontendLayout>} />
         <Route path="/team" element={<FrontendLayout><Team /></FrontendLayout>} />
         <Route path="/careers" element={<FrontendLayout><Careers /></FrontendLayout>} />
         <Route path="/contact" element={<FrontendLayout><Contact /></FrontendLayout>} />
         <Route path="/faq" element={<FrontendLayout><Faq /></FrontendLayout>} />
         <Route path="/terms-and-conditions" element={<FrontendLayout><TermsAndCondition /></FrontendLayout>} />
+        <Route path="/privacy-policy" element={<FrontendLayout><PrivacyPolicy /></FrontendLayout>} />
 
 
 

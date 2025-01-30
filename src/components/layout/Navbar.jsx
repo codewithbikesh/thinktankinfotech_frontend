@@ -83,7 +83,7 @@ const Navbar = () => {
     },
     {
       title: "Content Writing",
-      link: "/services/content-writing",
+      link: "/services/content-writing-services",
       description:
         "Engaging and meaningful content to connect with your audience.",
       image: Content_Creator,
