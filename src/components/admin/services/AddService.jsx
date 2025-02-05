@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumb";
 import CheckboxTwo from "../components/Checkboxes/CheckboxTwo";
-import { createStoreService } from "../actions/servicesActions";
+import { createStoreService } from "../redux/actions/servicesActions";
 import { toast } from "react-toastify";
 
 function AddService() {
@@ -11,7 +11,7 @@ function AddService() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
   const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();

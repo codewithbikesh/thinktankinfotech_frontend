@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux'; // To dispatch the logout action
 import { useNavigate } from 'react-router-dom'; // To handle navigation
-import { logoutUser } from '../actions/authActions';  // Adjust the import based on file structure
+import { logoutUser } from '../redux/actions/authActions';  // Adjust the import based on file structure
 import { toast } from 'react-toastify'; // Import react-toastify
 
 // Import the toastify CSS

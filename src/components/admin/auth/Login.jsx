@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../actions/authActions';  // Adjust the import based on file structure
+import { loginUser } from '../redux/actions/authActions';  // Adjust the import based on file structure
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,27 +14,32 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     // Check if both email and password are provided
     if (!email || !password) {
       toast.error('Please enter both email and password.');
       return; // Prevent form submission if fields are empty
     }
-
+  
     try {
       // Dispatch the login action
-      await dispatch(loginUser({ email, password }));
-
-      // Show success toast
-      toast.success('Login successful!');
-
-      // Redirect to a protected page (e.g., dashboard)
-      navigate('/dashboard');
+      const response = await dispatch(loginUser({ email, password }));
+  
+      // Check if the response contains an error (e.g., wrong credentials)
+      if (response.error) {
+        toast.error('Incorrect email or password.');
+      } else {
+        // Show success toast
+        toast.success('Login successful!');
+  
+        // Redirect to a protected page (e.g., dashboard)
+        navigate('/dashboard');
+      }
     } catch (err) {
-      toast.error('Incorrect email or password.');
+      toast.error('Something went wrong, please try again later.');
     }
   };
-
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full max-w-md">
